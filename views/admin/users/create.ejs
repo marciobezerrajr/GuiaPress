@@ -1,0 +1,22 @@
+<%- include ('../../partials/header.ejs') %>
+<%- include ('../../partials/navbar.ejs') %>
+
+<div class="container"> 
+
+    <!-- mt margin top, mb margin bottom mr, ml e no máximo é 5 de margem -->
+    <div class="card mt-4">
+        <div class="card-header">
+            Cadastrar usuário
+        </div>
+        <div class="card-body">
+                <form method="POST" action="/users/create">
+                    <input class="form-control" type="email" name="email" placeholder="insira seu e-mail, email@exemplo.com"><br>
+                    <input class="form-control" type="password" name="password" placeholder="digite sua senha"><br>
+                    <button type="submit" class="btn btn-success btn-block">Cadastrar</button>
+                </form>
+        </div>
+    </div>
+</div>
+
+
+<%- include ('../../partials/footer.ejs') %>

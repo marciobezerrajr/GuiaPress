@@ -1,0 +1,38 @@
+<%- include('partials/header') %>
+<%- include('partials/homenavbar') %>
+
+<body>
+    <div class="container"><br>
+        
+        <div class="jumbotron">
+            <h2 class="display-4">Bem vindo</h2>
+            <p class="lead">o Guiapress é um simples blog feito a partir das aulas do curso Formação NodeJS do Guia do programador</p>
+            <hr class="my-4">
+            <p>Os artigos e relatos descritos aqui, podem parecer muito cruéis, mas são relatos reais, então cuidado rsrsrs..</p>
+            <p class="lead">
+              <a class="btn btn-primary btn-lg" href="https://www.udemy.com/course/formacao-nodejs" role="button">Saiba mais</a>
+            </p>
+          </div>
+          <hr>
+
+        <% articles.forEach(article => { %>
+            <div class="card">
+                <div class="card-header">
+                    <h3><%= article.title %></h3>
+                   
+                </div>
+                <div class="card-body">
+                    <a href="/<%= article.slug %>" class="btn btn-success">Ler artigo</a>
+                </div>
+            </div>
+        <br>  
+        <% }) %>
+        <div class="row">
+            <div class=" col col-12">
+                <a href="/articles/page/2" style="float: right;">Próxima página >></a>
+            </div>
+        </div>
+    </div>
+
+</body>
+<%- include('partials/footer') %>
