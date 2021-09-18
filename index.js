@@ -25,8 +25,10 @@ app.use(express.static('public'))
 
 //Sessões
 app.use(session({
-    secret: 'Guiapress', cookie: { maxAge: 30000 } //uma palavra qualquer para aumentar a segunça das sessões
-}))
+    secret: 'Guiapress', cookie: { maxAge: 30000 }, //uma palavra qualquer para aumentar a segunça das sessões
+    resave: true,
+    saveUninitialized: true
+}));
 
 /*exemplo de dados guardados na sessão e como ler
 app.use('/session', (req, res) => {
