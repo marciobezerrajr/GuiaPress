@@ -25,7 +25,7 @@ app.use(express.static('public'))
 
 //Sessões
 app.use(session({
-    secret: 'Guiapress', cookie: { maxAge: 30000 }, //uma palavra qualquer para aumentar a segunça das sessões
+    secret: 'Guiapress', cookie: { maxAge: 3000000 }, //uma palavra qualquer para aumentar a segunça das sessões
     resave: true,
     saveUninitialized: true
 }));
@@ -49,6 +49,11 @@ app.use('/readsession', (req, res) => {
     res.send(req.session.user)
     )
 })*/
+
+//rotas controllers
+app.use('/', categoriesController)
+app.use('/', articlesController)
+app.use('/', usersController)
 
 app.get('/', (req, res) => {
     Article.findAll({
@@ -101,12 +106,6 @@ app.get('/category/:slug', (req, res) => {
         }
     })
 })
-
-//rotas controllers
-app.use('/', categoriesController)
-app.use('/', articlesController)
-app.use('/', usersController)
-
 
 
 app.listen(3000, ()=> {

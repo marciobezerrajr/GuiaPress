@@ -37,15 +37,52 @@ router.post("/users/create",(req, res) => {
                 console.log(err)
             })
         } else {
-            res.redirect('/admin/users/create')
+            res.redirect('admin/users/create')
         }
     })
 })
 
-router.get('/login', (req, res) => {
-    res.render('admin/users/login')
+
+router.get("/login", (req, res) => {
+    res.render("admin/users/login");
+});
+
+
+router.post('/authenticate', (req, res) => {
+    const email = req.body.email
+    const password = req.body.password
+
+    User.findOne({
+        where: {
+            email: email
+        }
+    }). then((user) => {
+        if(user != undefined){
+
+            const credential = bcrypt.compareSync(password, user.password)
+            
+            if(credential) { //cria a sessão
+                req.session.user = {
+                    id: user.id,
+                    email: user.email
+                }
+                res.redirect('/admin/articles')
+                
+
+            } else {
+                res.redirect('/login')
+            }
+
+        } else {
+            res.redirect('/login')
+        }
+    })
 })
 
-
+router.get('/logout', (req, res) => {
+    
+    req.session.destroy(function(err) {})
+    res.redirect('/')
+})
 
 module.exports = router
