@@ -5,9 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "netlify-lambda build express",
-    "start": "node index.js",
-    "postinstall": "netlify-lambda install"
+    
   },
   "keywords": [],
   "author": "",
@@ -19,7 +17,6 @@
     "express": "^4.17.1",
     "express-session": "^1.17.2",
     "mysql2": "^2.3.0",
-    "netlify-lambda": "^2.0.15",
     "sequelize": "^6.6.5",
     "slugify": "^1.6.0"
   }
